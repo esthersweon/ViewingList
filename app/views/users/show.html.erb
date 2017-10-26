@@ -3,9 +3,10 @@
 </h1>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createListModal"> Create a List</button>
 <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
-
+<br>
 <%@lists.each do |list| %>
-  <%= list.title %>
+  <h3><%= link_to list.title, list_path(list.id) %></h3>
+  <br>
 <% end %>
 
 <div class="modal fade" id="createListModal" tabindex="-1" role="dialog" aria-labelledby="createListModal" aria-hidden="true">
