@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root "pages#index"
+  root "lists#index"
 
-  get "/lists", to: "lists#index", as: "lists"
+  resources :lists, except: [:new, :edit] do
+    resources :comments, only: [:create, :destroy]
+  end
 
-  get '/secret', to: 'pages#secret', as: :secret
+  get  "/user", to: 'users#show', as: "user"
+
+  resources :movies
+
 end

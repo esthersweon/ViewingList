@@ -1,0 +1,7 @@
+<p> list index works </p>
+
+<% @lists.each do |list| %>
+  <h1> <%= link_to list.title, list_path(list.id) %> </h1>
+  <p> <%= list.description %> </p>
+  <br>
+<% end %>

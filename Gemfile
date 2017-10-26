@@ -29,11 +29,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'devise'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
-
+gem 'httparty'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
