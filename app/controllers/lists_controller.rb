@@ -2,6 +2,7 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
+    # @user = User.find(@lists.user_id)
   end
 
   def create
@@ -18,6 +19,9 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    list = List.find_by_id(params[:id])
+    list.destroy
+    redirect_to user_path
   end
 
   private
