@@ -1,10 +1,53 @@
 <h1> <%= @list.title %> </h1>
-<% if user_signed_in? && @list.user_id === @user.id %>
-  <button type="button" name="button">Edit</button>
-  <%= button_to "Delete", list_path(@list), method: :delete %>
+<% if user_signed_in? && @list.user_id === current_user.id %>
+  <button type="button" class="btn" data-toggle="modal" data-target="#editListModal"> Edit List</button>
+  <%= button_to "Delete", list_path(@list), method: :delete, class: "btn" %>
 
 <% end %>
 <br>
 List Created By: <%= @user.first_name %> <%=@user.last_name %>
 <br>
 Description: <%= @list.description %>
+
+<% @listmovies.each do |listmovie| %>
+  <% @movie = Movie.find(listmovie.movie_id) %>
+  <h1> <%=link_to  "#{@movie.title}  (#{ @movie['release_date'][0...4]})", movie_path(@movie.tmdb_id) %></h1>
+  <%= image_tag(@movie.image_url, alt: "No Poster Found") %>
+    <% if user_signed_in? && @list.user_id === current_user.id %>
+      <%= button_to "Remove From List", "/listmovie/#{listmovie.id}", method: :delete, class: "btn" %>
+    <% end %>
+  <br>
+<% end %>
+
+
+
+
+
+<div class="modal fade" id="editListModal" tabindex="-1" role="dialog" aria-labelledby="editListModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="editListModal">Edit List</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_tag("/lists/#{@list.id}", method: 'put') do %>
+          <%= label_tag(:title, "Title:") %>
+          <br>
+          <%= text_field_tag(:title) %>
+          <br>
+          <%= label_tag(:description, "Description:") %>
+          <br>
+          <%= text_area_tag(:description) %>
+          <%= hidden_field_tag(:user_id, @user.id ) %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= submit_tag "Edit List", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

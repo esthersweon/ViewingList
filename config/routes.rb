@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   end
 
   get  "/user", to: 'users#show', as: "user"
+  post "/listmovie", to: 'listmovies#create'
+  delete "/listmovie/:id", to: 'listmovies#destroy'
 
-  resources :movies
+  resources :movies, only: [:index, :show]
 
 end

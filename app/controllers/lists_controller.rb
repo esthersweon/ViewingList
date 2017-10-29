@@ -2,7 +2,6 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
-    # @user = User.find(@lists.user_id)
   end
 
   def create
@@ -13,9 +12,13 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @user = User.find(@list.user_id)
+    @listmovies = Listmovie.where(list_id: @list.id)
   end
 
-  def updated
+  def update
+    @list = List.find(params[:id])
+    List.update(@list.id, title: params[:title], description: params[:description])
+    redirect_to list_path(@list.id)
   end
 
   def destroy

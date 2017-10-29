@@ -4,6 +4,7 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createListModal"> Create a List</button>
 <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
 <br>
+<h2>Your Lists:</h2>
 <%@lists.each do |list| %>
   <h3><%= link_to list.title, list_path(list.id) %></h3>
   <br>
