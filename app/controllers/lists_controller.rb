@@ -13,6 +13,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @user = User.find(@list.user_id)
     @listmovies = Listmovie.where(list_id: @list.id)
+    @comments = Comment.where(list_id: @list.id)
   end
 
   def update

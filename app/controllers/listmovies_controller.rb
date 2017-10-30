@@ -11,8 +11,9 @@ class ListmoviesController < ApplicationController
   end
 
   def destroy
+    list = Listmovie.find(params[:id]).list_id
     Listmovie.find(params[:id]).destroy
-    redirect_to lists_path
+    redirect_to list_path(list)
   end
 
 end

@@ -1,3 +1,4 @@
+<%= image_tag @user.image_url%>
 <h1>
 <%= "Welcome "+ @user.first_name + " " + @user.last_name + "!" %>
 </h1>
@@ -19,22 +20,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <%= form_tag("/lists", method: 'post') do %>
-          <%= label_tag(:title, "Title:") %>
-          <br>
-          <%= text_field_tag(:title) %>
-          <br>
-          <%= label_tag(:description, "Description:") %>
-          <br>
-          <%= text_area_tag(:description) %>
-          <%= hidden_field_tag(:user_id, @user.id ) %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= submit_tag "Create List", class: 'btn btn-primary' %>
-        <% end %>
-      </div>
+      <%= form_tag("/lists", method: 'post') do %>
+        <div class="modal-body">
+            <%= label_tag(:title, "Title:") %>
+            <br>
+            <%= text_field_tag(:title) %>
+            <br>
+            <%= label_tag(:description, "Description:") %>
+            <br>
+            <%= text_area_tag(:description) %>
+            <%= hidden_field_tag(:user_id, @user.id ) %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= submit_tag "Create List", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

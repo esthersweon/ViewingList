@@ -15,12 +15,9 @@
         <%= link_to 'MovieLists', root_path, class: 'navbar-brand' %>
       </div>
       <div id="navbar">
-        <ul class="nav navbar-nav">
-          <li><%= link_to 'Home', root_path %></li>
-        </ul>
         <ul class="nav navbar-nav pull-right">
           <li>
-            <%= form_tag('/movies', method: :get) do %>
+            <%= form_tag('/movies', method: :get, class: 'form-inline') do %>
               <%= text_field_tag(:q) %>
               <%= submit_tag("Search")%>
             <% end %>

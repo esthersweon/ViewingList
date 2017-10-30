@@ -1,8 +1,7 @@
-<p> list index works </p>
-
 <% @lists.each do |list| %>
-<% @user = User.find(list.user_id) %> 
+  <% @user = User.find(list.user_id) %>
   <h1> <%= link_to list.title, list_path(list.id) %> </h1>
+  <%= image_tag @user.image_url%>
   <p> List Created By: <%= @user.first_name %> <%= @user.last_name %> </p>
   <br>
 <% end %>
