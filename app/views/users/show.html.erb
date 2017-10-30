@@ -1,15 +1,29 @@
-<%= image_tag @user.image_url%>
-<h1>
-<%= "Welcome "+ @user.first_name + " " + @user.last_name + "!" %>
-</h1>
+<div class="container">
+
+  <div class="row flexing">
+    <div class="col profile_image">
+      <img src= "<%= @user.image_url %>" >
+    </div>
+    <h2> <%= "Welcome "+ @user.first_name + " " + @user.last_name + "!" %> </h2>
+  </div>
+
+<br>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createListModal"> Create a List</button>
 <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
 <br>
-<h2>Your Lists:</h2>
+<div class="row text-center">
+  <h2>Your Lists:</h2>
+</div>
 <%@lists.each do |list| %>
-  <h3><%= link_to list.title, list_path(list.id) %></h3>
-  <br>
+<div class="card text-center">
+  <div class="card-block">
+    <h3><%= link_to list.title, list_path(list.id) %></h3>
+    <p class="card-text"><%= list.description %></p>
+  </div>
+</div>
 <% end %>
+ </div>
+
 
 <div class="modal fade" id="createListModal" tabindex="-1" role="dialog" aria-labelledby="createListModal" aria-hidden="true">
   <div class="modal-dialog" role="document">

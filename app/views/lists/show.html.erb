@@ -1,14 +1,20 @@
+<div class="container">
 <h1> <%= @list.title %> </h1>
+ </p> <%= @list.description %> </p>
+<div class="row flexing over">
+  <h5> List Created By: <%= @user.first_name %> <%= @user.last_name %> </h5>
+  <div class="col profile_image_small">
+    <%= image_tag @user.image_url%>
+  </div>
+</div>
 <% if user_signed_in? && @list.user_id === current_user.id %>
-  <button type="button" class="btn" data-toggle="modal" data-target="#editListModal"> Edit List</button>
-  <%= button_to "Delete", list_path(@list), method: :delete, class: "btn" %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editListModal"> Edit List</button>
+  <%= link_to "Delete", list_path(@list), method: :delete, class: "btn btn-primary" %>
 
 <% end %>
 <br>
-<%= image_tag @user.image_url%>
-List Created By: <%= @user.first_name %> <%=@user.last_name %>
-<br>
-Description: <%= @list.description %>
+
+
 
 <% @listmovies.each do |listmovie| %>
   <% @movie = Movie.find(listmovie.movie_id) %>
@@ -24,18 +30,25 @@ Description: <%= @list.description %>
 <h4>Add A Comment:</h4>
 <%= form_tag("/lists/#{@list.id}/comments", method: 'post') do %>
   <%= text_area_tag(:content) %>
+  <br>
   <%= submit_tag "Add Comment", class: 'btn btn-primary' %>
 <% end %>
-
+<br>
 <% @comments.each do |comment| %>
-  <% @comenter = User.find(comment.user_id) %>
+<% @comenter = User.find(comment.user_id) %>
+<div class="comment_box">
   <p> <%= comment.content %> </p>
-  <p> - <%= @comenter.first_name  %> <%= @comenter.last_name %> </p>
-  <%= image_tag @comenter.image_url%>
+  <div class="row flexing">
+    <div class="col profile_image_small over ">
+      <%= image_tag @comenter.image_url%>
+    </div>
+    <h5><%= @comenter.first_name  %> <%= @comenter.last_name %> </h5>
+  </div>
   <% if user_signed_in? && comment.user_id === current_user.id %>
-    <%= button_to "Delete Comment", "/lists/#{comment.user_id}/comments/#{comment.id}", method: :delete, class: "btn" %>
+  <%= button_to "Delete Comment", "/lists/#{comment.user_id}/comments/#{comment.id}", method: :delete, class: "btn" %>
   <% end %>
-  <br>
+</div>
+<br>
 <% end %>
 
 
@@ -68,4 +81,5 @@ Description: <%= @list.description %>
       <% end %>
     </div>
   </div>
+</div>
 </div>
