@@ -18,3 +18,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+
+$(document).on('turbolinks:load', function(){
+  $('.carousel').carousel()
+})

@@ -16,11 +16,11 @@
       <%= hidden_field_tag(:title, movie['title'] ) %>
       <%= hidden_field_tag(:release_date, movie['release_date'] ) %>
       <%= hidden_field_tag(:image_url, movie['poster_path'] ) %>
-      <%= submit_tag list.title %>
+      <%= submit_tag list.title, class: 'submit' %>
       <% end %>
       <% end %></li>
     </ul>
   </li>
   <% end %>
-  <br>
+  <hr>
   <% end %>

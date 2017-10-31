@@ -4,6 +4,7 @@
 <%= image_tag("http://image.tmdb.org/t/p/w185#{@movie['poster_path']}", alt: "No Poster Found")
 %>
 <% if user_signed_in? %>
+<div>
 <li class="dropdown">
   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
     Add To List
@@ -18,19 +19,18 @@
       <%= hidden_field_tag(:title, @movie['title'] ) %>
       <%= hidden_field_tag(:release_date, @movie['release_date'] ) %>
       <%= hidden_field_tag(:image_url, @movie['poster_path'] ) %>
-      <%= submit_tag list.title %>
+      <%= submit_tag list.title, class: 'submit' %>
       <% end %>
       <% end %>
     </li>
   </ul>
 </li>
+</div>
 <% end %>
 <h4>Overview:</h4>
 <p><%= @movie['overview'] %></p>
 <h5> Runtime <%= @movie['runtime'] %> Minutes</h5>
 <h4>Directed by:</h4>
-<ul>
   <% @crew.select {|p| p['job'] == "Director"}.each do |director|%>
-  <li> <%= director['name'] %></li>
+  <p> <%= director['name'] %></p>
   <% end %>
-</ul>

@@ -67,10 +67,40 @@
 div{
   text-align: center;
   margin: auto;
+  overflow-wrap: break-word;
+}
+
+.form-inline{
+  margin-top: 2vw;
+  margin-left: 31vw;
+}
+
+.navbar-brand{
+  padding-top: 2vw;
 }
 
 .width-small{
   max-width: 200px;
   margin-left: 40%;
 
+}
+
+.down{
+  margin-top: 10px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.dropdown-menu{
+  left: 31%;
+  background:#222222;
+}
+
+.submit{
+  background:#222222;
+  border:none;
+  font-size:1em;
+  color:#9d9d9d;
 }
