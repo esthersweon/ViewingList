@@ -94,8 +94,13 @@ li {
 }
 
 .dropdown-menu{
-  left: 31%;
+  left: 25%;
+  right: 25%;
   background:#222222;
+  text-align: center;
+}
+.dropdown-menu input{
+  max-width: 100%;
 }
 
 .submit{
