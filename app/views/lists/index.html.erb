@@ -4,9 +4,10 @@
   <% @user = User.find(list.user_id) %>
   <h1> <%= link_to list.title, list_path(list.id) %> </h1>
   <h5> List Created By: <%= @user.first_name %> <%= @user.last_name %> </h5>
+  <% @listmovies = Listmovie.where list_id: list.id %>
+  <% if @listmovies.length > 0 %>
   <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner poster" role="listbox">
-      <% @listmovies = Listmovie.where list_id: list.id %>
       <% @listmovies.each_with_index do |listmovie, index| %>
       <% @movie = Movie.find(listmovie.movie_id)%>
       <div class="item <% if index==0%> active<%end%>">
@@ -15,6 +16,9 @@
       <% end %>
     </div>
   </div>
+  <% else %>
+  <h2>There Are No Films In This List Yet</h2>
+  <% end %>
   <hr>
   <% end %>
 
