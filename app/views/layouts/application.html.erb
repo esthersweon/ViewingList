@@ -18,7 +18,7 @@
       <div id="navbar">
         <%= form_tag('/movies', method: :get, class: 'form-inline') do %>
           <%= text_field_tag(:q) %>
-          <%= submit_tag("Search")%>
+          <%= submit_tag("Search For Movies")%>
         <% end %>
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in? %>
