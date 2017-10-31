@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
       movie.tmdb_id = response.parsed_response['id']
       movie.title =  response.parsed_response['title']
       movie.release_date = response.parsed_response['release_date']
-      movie.image_url = "http://image.tmdb.org/t/p/w185#{response.parsed_response['poster_path']}"
+      movie.image_url = "https://image.tmdb.org/t/p/w185#{response.parsed_response['poster_path']}"
     end
     response = HTTParty.get("https://api.themoviedb.org/3/movie/#{movie.tmdb_id}?api_key=7c63b5b2b830539c1cc4b3954b6c8982&language=en-US")
     response2 = HTTParty.get("https://api.themoviedb.org/3/movie/#{movie.tmdb_id}/credits?api_key=7c63b5b2b830539c1cc4b3954b6c8982")
