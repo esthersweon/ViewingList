@@ -1,3 +1,7 @@
+<% if @movies.parsed_response["total_results"] === 0 %>
+<h1>No Results Found</h1>
+<h3>Our search feature can be perticular check your spelling and try again.</h3>
+<% end %>
 <% @movies.parsed_response["results"].each do |movie| %>
 <h2> <%=link_to  "#{movie['title']}  (#{ movie['release_date'][0...4]})", movie_path(movie['id']) %> </h2>
 <%= image_tag("https://image.tmdb.org/t/p/w185#{movie['poster_path']}", alt: "No Poster Found")

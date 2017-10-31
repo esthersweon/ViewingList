@@ -32,7 +32,7 @@
       <div class="modal-body">
         <%= label_tag(:title, "Title:") %>
         <br>
-        <%= text_field_tag(:title) %>
+        <%= text_field_tag :title, nil, :required => true  %>
         <br>
         <%= label_tag(:description, "Description:") %>
         <br>
