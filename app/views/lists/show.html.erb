@@ -1,11 +1,8 @@
 <div class="container">
-<h1> <%= @list.title %> </h1>
- </p> <%= @list.description %> </p>
-<div class="row flexing over">
+  <h1> <%= @list.title %> </h1>
+  </p> <%= @list.description %> </p>
+  <img src= "<%= @user.image_url %>", class="profile_image" >
   <h5> List Created By: <%= @user.first_name %> <%= @user.last_name %> </h5>
-  <div class="col profile_image_small">
-    <%= image_tag @user.image_url%>
-  </div>
 </div>
 <% if user_signed_in? && @list.user_id === current_user.id %>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editListModal"> Edit List</button>
@@ -29,7 +26,7 @@
 <h3>Comments:</h3>
 <h4>Add A Comment:</h4>
 <%= form_tag("/lists/#{@list.id}/comments", method: 'post') do %>
-  <%= text_area_tag(:content) %>
+  <%= text_area_tag :content, nil, size: "68x7" %>
   <br>
   <%= submit_tag "Add Comment", class: 'btn btn-primary' %>
 <% end %>
@@ -37,13 +34,8 @@
 <% @comments.each do |comment| %>
 <% @comenter = User.find(comment.user_id) %>
 <div class="comment_box">
-  <p> <%= comment.content %> </p>
-  <div class="row flexing">
-    <div class="col profile_image_small over ">
-      <%= image_tag @comenter.image_url%>
-    </div>
-    <h5><%= @comenter.first_name  %> <%= @comenter.last_name %> </h5>
-  </div>
+  <h4> <%= comment.content %> </h4>
+    <h6> - <%= @comenter.first_name  %> <%= @comenter.last_name %> </h6>
   <% if user_signed_in? && comment.user_id === current_user.id %>
   <%= button_to "Delete Comment", "/lists/#{comment.user_id}/comments/#{comment.id}", method: :delete, class: "btn" %>
   <% end %>

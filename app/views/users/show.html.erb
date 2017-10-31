@@ -1,28 +1,22 @@
 <div class="container">
-
-  <div class="row flexing">
-    <div class="col profile_image">
-      <img src= "<%= @user.image_url %>" >
+  <img src= "<%= @user.image_url %>", class="profile_image" >
+  <h2> <%= "Welcome "+ @user.first_name + " " + @user.last_name + "!" %> </h2>
+  <br>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createListModal"> Create a List</button>
+  <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
+  <br>
+  <div class="row text-center">
+    <h2>Your Lists:</h2>
+  </div>
+  <%@lists.each do |list| %>
+  <div class="card text-center">
+    <div class="card-block">
+      <h3><%= link_to list.title, list_path(list.id) %></h3>
+      <p class="card-text"><%= list.description %></p>
     </div>
-    <h2> <%= "Welcome "+ @user.first_name + " " + @user.last_name + "!" %> </h2>
   </div>
-
-<br>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createListModal"> Create a List</button>
-<%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
-<br>
-<div class="row text-center">
-  <h2>Your Lists:</h2>
+  <% end %>
 </div>
-<%@lists.each do |list| %>
-<div class="card text-center">
-  <div class="card-block">
-    <h3><%= link_to list.title, list_path(list.id) %></h3>
-    <p class="card-text"><%= list.description %></p>
-  </div>
-</div>
-<% end %>
- </div>
 
 
 <div class="modal fade" id="createListModal" tabindex="-1" role="dialog" aria-labelledby="createListModal" aria-hidden="true">
@@ -35,20 +29,20 @@
         </button>
       </div>
       <%= form_tag("/lists", method: 'post') do %>
-        <div class="modal-body">
-            <%= label_tag(:title, "Title:") %>
-            <br>
-            <%= text_field_tag(:title) %>
-            <br>
-            <%= label_tag(:description, "Description:") %>
-            <br>
-            <%= text_area_tag(:description) %>
-            <%= hidden_field_tag(:user_id, @user.id ) %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= submit_tag "Create List", class: 'btn btn-primary' %>
-        </div>
+      <div class="modal-body">
+        <%= label_tag(:title, "Title:") %>
+        <br>
+        <%= text_field_tag(:title) %>
+        <br>
+        <%= label_tag(:description, "Description:") %>
+        <br>
+        <%= text_area_tag :description, nil, size: "68x7" %>
+        <%= hidden_field_tag(:user_id, @user.id ) %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= submit_tag "Create List", class: 'btn btn-primary' %>
+      </div>
       <% end %>
     </div>
   </div>
