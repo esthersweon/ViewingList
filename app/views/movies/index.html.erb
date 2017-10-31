@@ -1,6 +1,6 @@
 <% @movies.parsed_response["results"].each do |movie| %>
 <h2> <%=link_to  "#{movie['title']}  (#{ movie['release_date'][0...4]})", movie_path(movie['id']) %> </h2>
-<%= image_tag("http://image.tmdb.org/t/p/w185#{movie['poster_path']}", alt: "No Poster Found")
+<%= image_tag("https://image.tmdb.org/t/p/w185#{movie['poster_path']}", alt: "No Poster Found")
 %>
 <% if user_signed_in? %>
 <li class="dropdown">
