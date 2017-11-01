@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Link to Heroku page: https://enigmatic-beach-54306.herokuapp.com/
 
-Things you may want to cover:
+Technologies used: Ruby on Rails, Devise, Bootstraps, HTTParty
 
-* Ruby version
+To install and run locally:
+ * Clone this repo
+ * Do a Bundle install
+ * Do a rails db:migrate
 
-* System dependencies
+ Wire Frames:  https://imgur.com/2MGuntf
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ ERD: https://imgur.com/oDhndUG

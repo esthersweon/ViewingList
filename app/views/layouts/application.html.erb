@@ -10,7 +10,7 @@
 
   <body>
     <nav class="navbar navbar-inverse">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <%= link_to 'VeiwingList', root_path, class: 'navbar-brand' %>
         </div>
@@ -49,11 +49,9 @@
     </div>
 
     <%= yield :top_content %>
-
-    <div class="container">
-      <h1><%= yield :header %></h1>
-      <%= yield %>
-    </div>
+    <h1><%= yield :header %></h1>
+    <%= yield %>
+    
     <div class="footer">
       <%= image_tag("https://www.themoviedb.org/assets/static_cache/27b65cb40d26f78354a4ac5abf87b2be/images/v4/logos/powered-by-rectangle-green.svg", :class => "footer-img") %>
     </div>

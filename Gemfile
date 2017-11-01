@@ -35,6 +35,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem 'httparty'
+gem 'rails-erd', require: false, group: :development
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
