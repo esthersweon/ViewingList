@@ -24,7 +24,7 @@
 
 .profile_image{
   max-width: 200px;
-  margin-right: 5px;
+  border: black solid 1px;
 }
 
 .profile_image img{
@@ -40,7 +40,7 @@
 
 .profile_image_small{
   width: 75px;
-  margin:  5px 0px;
+  border: black solid 1px;
 }
 
 .over{
@@ -112,4 +112,8 @@ li {
   border:none;
   font-size:1em;
   color:#9d9d9d;
+}
+
+.navbar {
+  border-radius: 0px;
 }
