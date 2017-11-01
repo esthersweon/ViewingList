@@ -13,7 +13,7 @@
       <div class="carousel-inner poster" role="listbox">
         <% @listmovies.each_with_index do |listmovie, index| %>
           <% @movie = Movie.find(listmovie.movie_id)%>
-          <div class="item <% if index==0%> active<%end%>">
+          <div class="item <% if index==0%> active <%end%>">
           <img class="d-block img-fluid" src="<%= @movie.image_url%>" alt="No Poster Found">
           </div>
         <% end %>

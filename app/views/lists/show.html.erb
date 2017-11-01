@@ -14,33 +14,34 @@
   <% @movie = Movie.find(listmovie.movie_id) %>
   <h1> <%=link_to  "#{@movie.title}  (#{ @movie['release_date'][0...4]})", movie_path(@movie.tmdb_id) %></h1>
   <%= image_tag(@movie.image_url, alt: "No Poster Found") %>
-    <% if user_signed_in? && @list.user_id === current_user.id %>
-      <%= button_to "Remove From List", "/listmovie/#{listmovie.id}", method: :delete, class: "btn" %>
-    <% end %>
+  <% if user_signed_in? && @list.user_id === current_user.id %>
+    <br>
+    <%= button_to "Remove From List", "/listmovie/#{listmovie.id}", method: :delete, class: "btn btn-primary down" %>
+  <% end %>
   <hr>
 <% end %>
 <% if user_signed_in? %>
-<h3>Comments:</h3>
-<h4>Add A Comment:</h4>
-<%= form_tag("/lists/#{@list.id}/comments", method: 'post') do %>
-  <%= text_area_tag :content, nil, size: "68x7", :maxlength => 300 %>
-  <br>
-  <%= submit_tag "Add Comment", class: 'btn btn-primary' %>
+  <h3>Comments:</h3>
+  <h4>Add A Comment:</h4>
+  <%= form_tag("/lists/#{@list.id}/comments", method: 'post') do %>
+    <%= text_area_tag :content, nil, size: "68x7", :maxlength => 300 %>
+    <br>
+    <%= submit_tag "Add Comment", class: 'btn btn-primary' %>
   <% end %>
-  <% else %>
+<% else %>
   <h1>Log In To Comment</h1>
 <% end %>
 <br>
 <% @comments.each do |comment| %>
-<% @comenter = User.find(comment.user_id) %>
-<div class="comment_box">
-  <h4> <%= comment.content %> </h4>
+  <% @comenter = User.find(comment.user_id) %>
+  <div class="comment_box">
+    <h4> <%= comment.content %> </h4>
     <h6> - <%= @comenter.first_name  %> <%= @comenter.last_name %> </h6>
-  <% if user_signed_in? && comment.user_id === current_user.id %>
-  <%= button_to "Delete Comment", "/lists/#{comment.user_id}/comments/#{comment.id}", method: :delete, class: "btn" %>
-  <% end %>
-</div>
-<br>
+    <% if user_signed_in? && comment.user_id === current_user.id %>
+      <%= button_to "Delete Comment", "/lists/#{comment.user_id}/comments/#{comment.id}", method: :delete, class: "btn" %>
+    <% end %>
+  </div>
+  <br>
 <% end %>
 <hr>
 
@@ -72,5 +73,4 @@
       <% end %>
     </div>
   </div>
-</div>
 </div>

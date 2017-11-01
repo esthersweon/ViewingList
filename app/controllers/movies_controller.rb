@@ -1,6 +1,5 @@
 class MoviesController < ApplicationController
 
-
   def index
     response = HTTParty.get('https://api.themoviedb.org/3/search/movie?api_key=7c63b5b2b830539c1cc4b3954b6c8982&language=en-US&page=1&include_adult=false&query=' + params[:q])
     @movies = response
@@ -9,8 +8,6 @@ class MoviesController < ApplicationController
         @users_lists = List.where(user_id: current_user.id)
       end
   end
-
-  # response.parsed_response["total_pages"] || ["page"]
 
   def show
     response = HTTParty.get("https://api.themoviedb.org/3/movie/#{params[:id]}?api_key=7c63b5b2b830539c1cc4b3954b6c8982&language=en-US")

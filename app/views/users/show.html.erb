@@ -9,12 +9,12 @@
     <h2>Your Lists:</h2>
   </div>
   <%@lists.each do |list| %>
-  <div class="card text-center">
-    <div class="card-block">
-      <h3><%= link_to list.title, list_path(list.id) %></h3>
-      <p class="card-text"><%= list.description %></p>
+    <div class="card text-center">
+      <div class="card-block">
+        <h3><%= link_to list.title, list_path(list.id) %></h3>
+        <p class="card-text"><%= list.description %></p>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
 
@@ -29,20 +29,20 @@
         </button>
       </div>
       <%= form_tag("/lists", method: 'post') do %>
-      <div class="modal-body">
-        <%= label_tag(:title, "Title:") %>
-        <br>
-        <%= text_field_tag :title, nil, :required => true  %>
-        <br>
-        <%= label_tag(:description, "Description:") %>
-        <br>
-        <%= text_area_tag :description, nil, size: "68x7" %>
-        <%= hidden_field_tag(:user_id, @user.id ) %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= submit_tag "Create List", class: 'btn btn-primary' %>
-      </div>
+        <div class="modal-body">
+          <%= label_tag(:title, "Title:") %>
+          <br>
+          <%= text_field_tag :title, nil, :required => true  %>
+          <br>
+          <%= label_tag(:description, "Description:") %>
+          <br>
+          <%= text_area_tag :description, nil, size: "68x7" %>
+          <%= hidden_field_tag(:user_id, @user.id ) %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= submit_tag "Create List", class: 'btn btn-primary' %>
+        </div>
       <% end %>
     </div>
   </div>
