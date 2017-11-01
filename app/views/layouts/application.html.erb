@@ -49,9 +49,11 @@
     </div>
 
     <%= yield :top_content %>
-    <h1><%= yield :header %></h1>
-    <%= yield %>
-    
+
+    <div class="container">
+      <h1><%= yield :header %></h1>
+      <%= yield %>
+    </div>
     <div class="footer">
       <%= image_tag("https://www.themoviedb.org/assets/static_cache/27b65cb40d26f78354a4ac5abf87b2be/images/v4/logos/powered-by-rectangle-green.svg", :class => "footer-img") %>
     </div>
