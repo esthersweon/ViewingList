@@ -1,27 +1,25 @@
-<div class="container">
-  <div class="jumbotron">
-    <h1>VeiwingList</h1>
-    <p> Having trouble keeping track of the movies you've seen? VeiwingList is a place for you to keep teack of that kind of thing. It's also a place for you to see what other people are watching. It's a place where you can keep your lists of movies you've seen, want to see, or never want to see again! It's easy just search for the movies and add them to your list, or browse other peoples lists and add films from there. </p>
-  </div>
-  <% @lists.each do |list| %>
-    <% @user = User.find(list.user_id) %>
-    <h1> <%= link_to list.title, list_path(list.id) %> </h1>
-    <h5> List Created By: <%= @user.first_name %> <%= @user.last_name %> </h5>
-    <% @listmovies = Listmovie.where list_id: list.id %>
-    <% if @listmovies.length > 0 %>
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner poster" role="listbox">
-        <% @listmovies.each_with_index do |listmovie, index| %>
-          <% @movie = Movie.find(listmovie.movie_id)%>
-          <div class="item <% if index==0%> active <%end%>">
-          <img class="d-block img-fluid" src="<%= @movie.image_url%>" alt="No Poster Found">
-          </div>
-        <% end %>
-      </div>
-      </div>
-    <% else %>
-      <h2>There Are No Films In This List Yet</h2>
-    <% end %>
-    <hr>
-  <% end %>
+<div class="jumbotron">
+  <h1>VeiwingList</h1>
+  <p> Having trouble keeping track of the movies you've seen? VeiwingList is a place for you to keep teack of that kind of thing. It's also a place for you to see what other people are watching. It's a place where you can keep your lists of movies you've seen, want to see, or never want to see again! It's easy just search for the movies and add them to your list, or browse other peoples lists and add films from there. </p>
 </div>
+<% @lists.each do |list| %>
+  <% @user = User.find(list.user_id) %>
+  <h1> <%= link_to list.title, list_path(list.id) %> </h1>
+  <h5> List Created By: <%= @user.first_name %> <%= @user.last_name %> </h5>
+  <% @listmovies = Listmovie.where list_id: list.id %>
+  <% if @listmovies.length > 0 %>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner poster" role="listbox">
+      <% @listmovies.each_with_index do |listmovie, index| %>
+        <% @movie = Movie.find(listmovie.movie_id)%>
+        <div class="item <% if index==0%> active <%end%>">
+        <img class="d-block img-fluid" src="<%= @movie.image_url%>" alt="No Poster Found">
+        </div>
+      <% end %>
+    </div>
+    </div>
+  <% else %>
+    <h2>There Are No Films In This List Yet</h2>
+  <% end %>
+  <hr>
+<% end %>

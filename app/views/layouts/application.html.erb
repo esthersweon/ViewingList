@@ -9,12 +9,11 @@
   </head>
 
   <body>
+
+
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
-        <div class="navbar-header">
           <%= link_to 'VeiwingList', root_path, class: 'navbar-brand' %>
-        </div>
-        <div id="navbar">
           <%= form_tag('/movies', method: :get, class: 'form-inline') do %>
             <%= text_field_tag(:q) %>
             <%= submit_tag("Search For Movies", class: "btn btn-primary")%>
@@ -37,9 +36,10 @@
               <li><%= link_to 'Sign Up', new_user_registration_path %></li>
             <% end %>
           </ul>
-        </div>
       </div>
     </nav>
+
+
     <div class="container">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>">
