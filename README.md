@@ -19,8 +19,8 @@ To install and run locally:
 
  Future Features:
  * Cast and Crew Listings
- * Ability To See All Films Cast and Crew Worked on
+ * Ability To See All Films Cast and Crew Worked On (Some of this has already been started)
  * Genre Sorting
  * Comment Notification System
  * Comments on Comments
- * Build Up Own DataBase 
+ * Build Up Own DataBase
