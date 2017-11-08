@@ -5,6 +5,7 @@ class ListsController < ApplicationController
   end
 
   def create
+    fail
     @list = List.create(title: params[:title], description: params[:description], user_id: params[:user_id])
     redirect_to root_path
   end
