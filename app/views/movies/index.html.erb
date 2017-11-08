@@ -12,7 +12,7 @@
         <span class="caret"></span>
       </a>
       <ul class="dropdown-menu" role="menu">
-        <li> <button type="button" class="submit" data-toggle="modal" data-target="#createListModal"> Create a List</button><% fail %> </li>
+        <li> <button type="button" class="submit" data-toggle="modal" data-target="#createListModal"> Create a List</button></li>
         <li><% @users_lists.each do |list| %>
           <%= form_tag("/listmovie") do  %>
             <%= hidden_field_tag(:list_id, list.id ) %>
