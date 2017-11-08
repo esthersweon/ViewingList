@@ -30,32 +30,32 @@
 <% end %>
 
 <% if user_signed_in? %>
-<div class="modal fade" id="createListModal" tabindex="-1" role="dialog" aria-labelledby="createListModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="createListModal">Create a List</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="modal fade" id="createListModal" tabindex="-1" role="dialog" aria-labelledby="createListModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="createListModal">Create a List</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <%= form_tag("/lists", method: 'post') do %>
+          <div class="modal-body">
+            <%= label_tag(:title, "Title:") %>
+            <br>
+            <%= text_field_tag :title, nil, :required => true  %>
+            <br>
+            <%= label_tag(:description, "Description:") %>
+            <br>
+            <%= text_area_tag :description, nil, size: "68x7" %>
+            <%= hidden_field_tag(:user_id, @user.id ) %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= submit_tag "Create List", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       </div>
-      <%= form_tag("/lists", method: 'post') do %>
-        <div class="modal-body">
-          <%= label_tag(:title, "Title:") %>
-          <br>
-          <%= text_field_tag :title, nil, :required => true  %>
-          <br>
-          <%= label_tag(:description, "Description:") %>
-          <br>
-          <%= text_area_tag :description, nil, size: "68x7" %>
-          <%= hidden_field_tag(:user_id, @user.id ) %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= submit_tag "Create List", class: 'btn btn-primary' %>
-        </div>
-      <% end %>
     </div>
   </div>
-</div>
 <% end %>
