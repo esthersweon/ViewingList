@@ -21,4 +21,10 @@
 
 $(document).on('turbolinks:load', function(){
   $('.carousel').carousel()
+  // yes!! do this ^
 })
+
+// Because your app is a Rails app with all server-side rendering
+// and no front-end framework at the moment, I'd recommend flushing out
+// the JS folder with a few interactive bits so that you can say
+// you worked full-stack on this app – let me know if you want more suggestions for this

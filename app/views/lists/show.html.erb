@@ -10,6 +10,7 @@
 <% end %>
 <hr>
 
+<!-- Again, I think it'd be REALLY cool and a good challenge to make these movies appear in a carousel – because your movies don't have much besides an image and a title/year. On the flip-side, you could just add the stuff on each movie's show page as text next to each movie on this page (i.e. synopsis, etc.) -->
 <% @listmovies.each do |listmovie| %>
   <% @movie = Movie.find(listmovie.movie_id) %>
   <h1> <%=link_to  "#{@movie.title}  (#{ @movie['release_date'][0...4]})", movie_path(@movie.tmdb_id) %></h1>
